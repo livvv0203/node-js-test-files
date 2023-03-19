@@ -11,7 +11,7 @@ const person = {
   // 'this' here refers to the current object: person
   greet_2() {
     console.log('Hi, I am: ' + this.name);
-  }
+  },
 };
 
 // console.log(person);
@@ -24,15 +24,15 @@ console.log(hobbies);
 
 let n = 1;
 for (let h of hobbies) {
-    console.log('This is the: '+  n + 'th hobby: ' + h);
-    n++;
+  console.log('This is the: ' + n + 'th hobby: ' + h);
+  n++;
 }
 
-const hobbiesModified = hobbies.map(hobby => 'Hobby: ' + hobby);
+const hobbiesModified = hobbies.map((hobby) => 'Hobby: ' + hobby);
 console.log(hobbiesModified);
 
 // Primitive and Reference type recap in 2mins
-// Object and arrays are ref types - Only store the address point to the place of the memory where array is stored, and the pointer is not changed by modify the elements   
+// Object and arrays are ref types - Only store the address point to the place of the memory where array is stored, and the pointer is not changed by modify the elements
 
 /**
  * Spread
@@ -41,15 +41,30 @@ const copiedHobby = hobbies.slice();
 const copiedHobby2 = [...hobbies];
 console.log(copiedHobby);
 console.log(copiedHobby2);
+const copiedPerson = { ...person };
+console.log(copiedPerson);
 /**
- * Rest
+ * Rest - to merge multiple arg to an array
  */
- 
 
+/**
+ * Destructure
+ */
+const animal = {
+  type: 'cat',
+  age: 8,
+  sound() {
+    console.log('Miao...');
+  },
+};
 
+console.log(animal);
 
+const printAgeOfAnimal = ({ age }) => {
+  console.log(age);
+};
 
+printAgeOfAnimal(animal);
 
-
-
-
+const { type, age } = animal;
+console.log(type, age);
