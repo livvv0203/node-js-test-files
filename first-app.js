@@ -8,6 +8,3 @@ fs.writeFileSync('hello.txt', 'Hello Hello!');
 // Run code in REPL way: node + enter
 
 
-
-
-

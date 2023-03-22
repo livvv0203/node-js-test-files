@@ -15,6 +15,3 @@ setTimeout(() => {
 // sync code
 console.log('hi'); // no delay
 
-const promise = new Promise().then((res) => {
-  console.log(res);
-});
