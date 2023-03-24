@@ -19,7 +19,22 @@ const server = http.createServer((req, res) => {
   }
 
   if (url === '/message' && method === 'POST') {
-    fs.writeFileSync('message.txt', 'Test Message');
+
+    // Read the body of the request
+    const body = [];
+
+    req.on('data', (chunck) => {
+        console.log(chunck);
+        body.push(chunck);
+    });
+
+    req.on('end', () => {
+        const parseBody = Buffer.concat(body).toString();
+        console.log(parseBody);
+        const message = parseBody.split('=')[1];
+        fs.writeFileSync('message.txt', message);
+    });
+
     res.statusCode = 302;
     res.setHeader('Location', '/');
     return res.end();
@@ -36,3 +51,12 @@ const server = http.createServer((req, res) => {
 
 // port, hostname, backlog
 server.listen(3003); // will keep listening on requests
+
+
+
+
+
+
+
+
+
