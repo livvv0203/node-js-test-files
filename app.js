@@ -1,27 +1,24 @@
 // Can also be named as Server.js
 // This is the root file
-const http = require('http');
+// const http = require('http')；
 
+// Using express.js
 const express = require('express');
+const bodyParser = require('body-parser');
+const adminRoutes = require('./routes/admin');
+const clientRoutes = require('./routes/shop');
 
 // Create an express application instance
 const app = express(); // Pass app as first argument to express constructor, for creating a server
 
-// next is a function that will be passed
-app.use((req, res, next) => {
-  console.log('In the Middleware!');
-  next(); // Allows the request to continue to the next middleware
-});
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(adminRoutes);
+app.use(clientRoutes);
+
+// Handle 404
 app.use((req, res, next) => {
-    console.log('Finished in the Middleware!');
-    // ...
-    res.send('<h1>Hi from Jieqing!!!!</h1>'); // send response
+  res.status(404).send('<h1>404 Page not FOUND!</h1>');
 });
 
 app.listen(3000);
-
-// const server = http.createServer(app);
-
-// // port, hostname, backlog
-// server.listen(3000); // will keep listening on requests

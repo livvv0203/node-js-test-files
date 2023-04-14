@@ -19,5 +19,8 @@
   "homepage": "https://github.com/livvv0203/node-js-test-files#readme",
   "devDependencies": {
     "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2"
   }
 }
