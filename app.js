@@ -13,7 +13,7 @@ const app = express(); // Pass app as first argument to express constructor, for
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(clientRoutes);
 
 // Handle 404
