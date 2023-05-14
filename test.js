@@ -12,7 +12,7 @@ function AnotherFunction(content) {
 }
 
 // TestFunction();
-// AnotherFunction('Test Test Test!!!');
+AnotherFunction('Test Test Test!!!');
 
 
 
