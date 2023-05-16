@@ -56,12 +56,47 @@ class SinglyLinkedList {
     console.log(current);
     return current;
   }
+  // removing a node from the beginning
+  shift() {
+    if (!this.head) return undefined;
 
-  
+    let shiftedHead = this.head;
+    this.head = shiftedHead.next;
+    this.length--;
+    console.log(shiftedHead);
+    return shiftedHead;
+  }
+
+  // adding a new node to the beginning of the Link list
+  unshift(value) {
+    let newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return 'Invalid index!';
+
+    let counter = 0;
+    let current = this.head;
+    while (counter != index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
 }
 
 var l = new SinglyLinkedList();
 l.push(1);
 l.push(2);
 l.push(3);
-l.pop();
+l.unshift('Hi');
+console.log(JSON.stringify(l.get(12)));
