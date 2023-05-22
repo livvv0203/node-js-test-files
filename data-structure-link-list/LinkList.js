@@ -119,18 +119,62 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+
+  // remove a node at a specific position
+  remove(index) {
+    // index is less than 0 or greater than length
+    if (index < 0 || index > this.length) return 'Invalid index!';
+    // index is same as (length - 1) -> pop, remove last item
+    if (index === this.length - 1) return this.pop();
+    // index is 0, shift
+    if (index === 0) return this.shift();
+    // otherwise, use the get method, access the node at index - 1, which is the prev node
+    var previousNode = this.get(index - 1);
+    var removedNode = previousNode.next;
+    previousNode.next = removedNode.next;
+    this.length--;
+ 
+    return removedNode;
+  }
+
+  // reverse the linked list
+  reverse() {
+    // first, we swap head and tail
+    let current = this.head; // temp node to store head
+    this.head = this.tail;
+    this.tail = current;
+
+    let next;
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    return this;
+  }
+
+  // traverse the linked list and print the value
+  print() {
+    let arr = [];
+    let current = this.head;
+    while (current) {
+      arr.push(current.value);
+      current = current.next;
+    }
+    console.log(arr);
+  }
 }
 
 var l = new SinglyLinkedList();
 l.push(1);
 l.push(2);
 l.push(3);
-console.log(l);
 
-
-
-
-
-
-
-
+l.print();
+// execute function
+l.reverse();
+l.print();
+// console.log(JSON.stringify(l));
