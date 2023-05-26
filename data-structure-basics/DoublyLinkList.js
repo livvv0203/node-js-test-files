@@ -15,8 +15,9 @@ class DoublyLinkedList {
 }
 
 let node = new Node(2);
-console.log(node);
+// console.log(node);
 
 let DLL = new DoublyLinkedList(5);
-console.log(DLL);
+// console.log(DLL);
+
 
