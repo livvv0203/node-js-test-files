@@ -72,7 +72,7 @@ class DoublyLinkedList {
   // Create a new node with value that is passed in as a parameter, to the beginning of the list
   unshift(value) {
     let newNode = new Node(value);
-    console.log(newNode.value);
+    // console.log(newNode.value);
     // Length is 0, set both head and tail to the new node
     if (this.length === 0) {
       this.head = newNode;
@@ -91,12 +91,12 @@ class DoublyLinkedList {
     let count = 0;
     let current = this.head;
     while (count != index) {
-      console.log("Value is: " + current.value);
+      // console.log("Value is: " + current.value);
       current = current.next;
-      console.log("Now Value is: " + current.value);
+      // console.log("Now Value is: " + current.value);
       count++;
     }
-    console.log(current.value);
+    // console.log(current.value);
     return current;
   }
 
@@ -109,15 +109,46 @@ class DoublyLinkedList {
     }
     return false;
   }
+
+  insert(index, value) {
+    // check edge cases
+    if (index < 0 || index >= this.length) return "Invalid index!";
+    if (index === 0) return this.unshift(value);
+    if (index === this.length) return this.push(value);
+
+    // Otherwise, use the get method to find the node at (index - 1)
+    let newNode = new Node(value);
+    let prevNode = this.get(index - 1);
+    let nextNode = prevNode.next;
+
+    // Set of connections
+    prevNode.next = newNode, newNode.prev = prevNode;
+    newNode.next = nextNode, nextNode.prev = newNode;
+    this.length++;
+    return true;
+  }
+
+  traverse() {
+    let i = 0;
+    let currentNode = this.head;
+    let arr = [];
+    while(i < this.length) {
+      // console.log(currentNode.value);
+      arr.push(currentNode.value);
+      currentNode = currentNode.next;
+      i++;
+    }
+    console.log(arr);
+  }
 }
 
 let DLL = new DoublyLinkedList();
 DLL.unshift(8);
 DLL.unshift(16);
 DLL.unshift(32);
+DLL.push(64);
 
-// console.log(DLL);
-console.log(DLL.get(1));
 // 32 -> 16 -> 8
-DLL.set(0, 10);
-console.log(DLL);
+DLL.insert(2, 'INSERTEDNODE');
+DLL.insert(4, 'NODEAT4');
+DLL.traverse();
