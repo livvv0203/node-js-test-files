@@ -122,8 +122,8 @@ class DoublyLinkedList {
     let nextNode = prevNode.next;
 
     // Set of connections
-    prevNode.next = newNode, newNode.prev = prevNode;
-    newNode.next = nextNode, nextNode.prev = newNode;
+    (prevNode.next = newNode), (newNode.prev = prevNode);
+    (newNode.next = nextNode), (nextNode.prev = newNode);
     this.length++;
     return true;
   }
@@ -132,13 +132,29 @@ class DoublyLinkedList {
     let i = 0;
     let currentNode = this.head;
     let arr = [];
-    while(i < this.length) {
+    while (i < this.length) {
       // console.log(currentNode.value);
       arr.push(currentNode.value);
       currentNode = currentNode.next;
       i++;
     }
     console.log(arr);
+  }
+
+  remove(index) {
+    // Edge cases
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    // Otherwise, find prev of the index and remove
+    let removedNode = this.get(index);
+    removedNode.prev.next = removedNode.next;
+    removedNode.next.prev = removedNode.prev;
+    removedNode.next = null;
+    removedNode.prev = null;
+    this.length--;
+    return removedNode;
   }
 }
 
@@ -149,6 +165,7 @@ DLL.unshift(32);
 DLL.push(64);
 
 // 32 -> 16 -> 8
-DLL.insert(2, 'INSERTEDNODE');
-DLL.insert(4, 'NODEAT4');
+DLL.insert(2, "INSERTEDNODE");
+DLL.insert(4, "NODEAT4");
+DLL.remove(3);
 DLL.traverse();
