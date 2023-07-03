@@ -46,7 +46,11 @@ class BinarySearchTree {
       }
     }
   }
-  // inserting a node - recursively
+  // Find a node in BST
+  find(value) {
+    // Starting at the root
+    if (this.root === null) return false;
+  }
 }
 
 //          10
@@ -54,6 +58,7 @@ class BinarySearchTree {
 //  2     7   11    16
 
 var tree = new BinarySearchTree();
-tree.insert(10);
-tree.insert(2);
+// tree.insert(10);
+// tree.insert(2);
 console.log(tree);
+console.log(tree.find(100));
