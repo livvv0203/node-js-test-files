@@ -21,7 +21,7 @@ var longestCommonPrefix = function (strs) {
   return strs[0];
 };
 
-let testInput = ["flowers", "flow", "flaws"];
-const result = longestCommonPrefix(testInput);
-console.log(result);
+// let testInput = ["flowers", "flow", "flaws"];
+// const result = longestCommonPrefix(testInput);
+// console.log(result);
 
