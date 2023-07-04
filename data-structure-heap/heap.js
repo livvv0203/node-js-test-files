@@ -1,11 +1,7 @@
 // Heaps: Anther category of trees
 
-// Min Binary Heap: parent nodes are always larger than children
-const arr = [1,2,3,4,5];
-console.log(arr); 
-
-
-
-
-
-
+/**
+ * For any index of an array n
+ * Left child is stored at 2n + 1
+ * right child is stored at 2n + 2
+ */
