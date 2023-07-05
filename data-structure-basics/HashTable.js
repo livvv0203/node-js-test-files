@@ -1,4 +1,8 @@
-// Hash Functions
+/**
+ * Hash Table: to store key-value pairs, not ordered
+ */
+
+/* Hash Functions */
 function randomHash(key) {
   let hash = Math.floor(Math.random() * 1000);
   return hash;
