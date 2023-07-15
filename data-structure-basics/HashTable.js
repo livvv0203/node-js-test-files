@@ -41,7 +41,6 @@ const result_2 = Object.values(obj);
 
 console.log(Object.keys(obj)[0]);
 
-
 result_2.forEach((value, index) => {
   if (value === inputVal) {
     foundKey = Object.keys(obj)[index];
