@@ -45,18 +45,50 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
-  // Traversal
-  
+  // Traversal - DFS - recursively
+  // function takes a vertex to start from
+  DFS(start) {
+    const result = [];
+    const visited = {};
+    const adjacencyList = this.adjacencyList;
 
+    // Inner helper function
+    (function dfsHelper(vertex) {
+      if (!vertex) return null;
+      // mark vertex as visited
+      visited[vertex] = true;
+      // add vertex to the result list
+      result.push(vertex);
+      // for each neiborgh, if not visited, recursively call DFS neighbor
+      adjacencyList[vertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          return dfsHelper(neighbor);
+        }
+      });
+    })(start);
+
+    return result;
+  }
+
+  DFSIterative(start) {
+    
+  }
 }
 
 const graph = new Graph();
 graph.addVertex("A");
 graph.addVertex("B");
 graph.addVertex("C");
+graph.addVertex("D");
+graph.addVertex("E");
+graph.addVertex("F");
 
 graph.addEdge("A", "B");
 graph.addEdge("A", "C");
-console.log(graph);
-graph.removeVertex("B");
-console.log(graph);
+graph.addEdge("B", "D");
+graph.addEdge("C", "E");
+graph.addEdge("D", "E");
+graph.addEdge("D", "F");
+graph.addEdge("E", "F");
+
+console.log(graph.DFS("B"));
