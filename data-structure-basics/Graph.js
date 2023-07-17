@@ -71,7 +71,24 @@ class Graph {
   }
 
   DFSIterative(start) {
-    
+    const result = [];
+    const visited = {};
+    const stack = [start];
+    let currentVertex;
+
+    visited[start] = true;
+    // when something in the stack
+    while (stack.length) {
+      currentVertex = stack.pop();
+      result.push(currentVertex);
+      this.adjacencyList[currentVertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          stack.push(neighbor);
+        }
+      });
+    }
+    return result;
   }
 }
 
@@ -91,4 +108,7 @@ graph.addEdge("D", "E");
 graph.addEdge("D", "F");
 graph.addEdge("E", "F");
 
+console.log(graph);
+
 console.log(graph.DFS("B"));
+console.log(graph.DFSIterative("B"));
