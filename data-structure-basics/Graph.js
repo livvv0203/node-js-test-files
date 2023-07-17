@@ -90,6 +90,28 @@ class Graph {
     }
     return result;
   }
+
+  breadthFirst(start) {
+    const queue = [start];
+    const result = [];
+    const visited = {};
+    let currentVertex;
+    // mark the first vertex as visited
+    visited[start] = true;
+
+    while (queue.length) {
+      currentVertex = queue.shift();
+      result.push(currentVertex);
+
+      this.adjacencyList[currentVertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          queue.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
 }
 
 const graph = new Graph();
@@ -112,3 +134,4 @@ console.log(graph);
 
 console.log(graph.DFS("B"));
 console.log(graph.DFSIterative("B"));
+console.log(graph.breadthFirst("A"));
