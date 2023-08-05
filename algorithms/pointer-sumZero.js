@@ -24,9 +24,10 @@ function sumZero_2(arr) {
   let rightPointer = arr.length - 1;
 
   while (leftPointer < rightPointer) {
-    if (arr[leftPointer] + arr[rightPointer] === 0) {
+    let sum = arr[leftPointer] + arr[rightPointer];
+    if (sum === 0) {
       return [arr[leftPointer], arr[rightPointer]];
-    } else if (arr[leftPointer] + arr[rightPointer] > 0) {
+    } else if (sum > 0) {
       rightPointer--;
     } else {
       leftPointer++;
