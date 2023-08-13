@@ -5,7 +5,7 @@
 
 // Using vertical scanning
 var longestCommonPrefix = function (strs) {
-  if (strs.length === 0) return "Invalid Input!";
+  if (strs.length === 0) return 'Invalid Input!';
 
   for (let i = 0; i < strs[0].length; i++) {
     // Compare each char of each string in the array
@@ -24,4 +24,3 @@ var longestCommonPrefix = function (strs) {
 // let testInput = ["flowers", "flow", "flaws"];
 // const result = longestCommonPrefix(testInput);
 // console.log(result);
-
