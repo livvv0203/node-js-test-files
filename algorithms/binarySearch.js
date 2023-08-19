@@ -19,8 +19,11 @@ const binarySearch = function (arr, element) {
   if (arr[middle] === element) {
     return middle;
   } else {
-    return 'No such element found!';
+    return "No such element found!";
   }
+
+  // refactor as:
+  // arr[middle] === element ? middle : "No such element found!";
 };
 
 const result = binarySearch(
@@ -28,7 +31,7 @@ const result = binarySearch(
     5, 6, 10, 13, 14, 18, 30, 34, 35, 37, 40, 44, 64, 79, 84, 86, 95, 96, 98,
     99,
   ],
-  111
+  5
 ); // 2
 
 console.log(result);
