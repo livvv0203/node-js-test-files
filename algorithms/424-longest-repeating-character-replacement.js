@@ -3,4 +3,8 @@
  * @param {number} k
  * @return {number}
  */
-var characterReplacement = function (s, k) {};
+var characterReplacement = function (s, k) {
+    
+};
+
+
