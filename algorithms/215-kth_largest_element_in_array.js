@@ -5,7 +5,7 @@
  * Note that it is the kth largest element in the sorted order, not the kth distinct element.
  * You must solve it in O(n) time complexity.
  */
-let arr = [3,2,3,1,2,4,5,5,6];
+let arr = [3, 2, 3, 1, 2, 4, 5, 5, 6];
 let k = 4;
 
 /**
@@ -16,7 +16,7 @@ let k = 4;
 var findKthLargest = (arr, k) => {
   console.log('Input arr is: ' + arr);
 
-  arr.sort(function(a, b) {
+  arr.sort(function (a, b) {
     return b - a;
   });
 
