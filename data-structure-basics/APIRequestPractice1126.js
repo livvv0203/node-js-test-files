@@ -31,3 +31,5 @@ function dataProcessor(data) {
   }
   console.log(dataContent);
 }
+
+fetchData();
